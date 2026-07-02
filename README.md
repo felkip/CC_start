@@ -49,15 +49,24 @@ cd "C:\Users\lfcar\OneDrive\Desktop\CC"
 ```
 
 ### 2. Criar ambiente virtual
+Use Python 3.13 ou 3.14 para evitar problemas de compatibilidade.
+```bash
+py -3.13 -m venv venv
+.\venv\Scripts\activate
+```
+Se não tiver o launcher do Windows, use:
 ```bash
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
-### 3. Instalar dependências
+### 3. Atualizar instaladores e instalar dependências
 ```bash
-pip install -r requirements.txt
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -r requirements.txt
 ```
+
+> `requirements.txt` já está fixado para `streamlit==1.58.0`, `psycopg2-binary==2.9.12`, `python-dotenv==1.0.0` e `bcrypt==4.1.1`.
 
 ### 4. Configurar banco de dados
 
@@ -92,4 +101,3 @@ A aplicação abrirá em `http://localhost:8501`
 - [x] Implementar Roadmap de estudos
 - [ ] Adicionar interface visual melhorada
 - [ ] Implementar sistema de recomendações
-
