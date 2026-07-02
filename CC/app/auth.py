@@ -12,9 +12,9 @@ def verify_password(password, password_hash):
 
 def register_user(username, email, password):
     """Registra um novo usuário."""
-    conn = get_db_connection()
+    conn, error = get_db_connection()
     if not conn:
-        return False, "Erro ao conectar ao banco de dados"
+        return False, f"Erro ao conectar ao banco de dados: {error}"
     
     try:
         cursor = conn.cursor()
@@ -42,15 +42,15 @@ def register_user(username, email, password):
 
 def login_user(username, password):
     """Faz login de um usuário."""
-    conn = get_db_connection()
+    conn, error = get_db_connection()
     if not conn:
-        return False, None, "Erro ao conectar ao banco de dados"
+        return False, None, f"Erro ao conectar ao banco de dados: {error}"
     
     try:
         cursor = conn.cursor()
         
         cursor.execute(
-            "SELECT id, senha_hash FROM usuarios WHERE nome_usuario = %s",
+            "SELECT id_usuario, senha_hash FROM usuarios WHERE nome_usuario = %s",
             (username,)
         )
         
