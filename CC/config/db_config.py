@@ -17,7 +17,7 @@ def get_db_connection():
     import psycopg2
     try:
         conn = psycopg2.connect(**DB_CONFIG)
-        return conn
+        return conn, None
     except psycopg2.Error as e:
-        print(f"Erro ao conectar ao banco: {e}")
-        return None
+        return None, str(e)
+
