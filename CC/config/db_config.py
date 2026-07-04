@@ -3,6 +3,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Exemplo de conexão com Supabase (comentado):
+# Troque SENHA e o host db.xxx.supabase.co pelo valor real do seu projeto.
+# DB_CONFIG = {
+#     'dsn': 'postgresql://postgres:SENHA@db.xxx.supabase.co:5432/postgres?sslmode=require',
+#     'sslmode': 'require'
+# }
+
 # Configuração do PostgreSQL
 DB_CONFIG = {
     'host': os.getenv('DB_HOST', 'localhost'),
